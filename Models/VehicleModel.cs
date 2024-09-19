@@ -1,22 +1,73 @@
-﻿namespace WestCoast_Cars;
+﻿using System.Security.Cryptography.X509Certificates;
+using WestCoast_Cars.Models;
+
+namespace WestCoast_Cars;
 
 public class VehicleModel
 {
-
-    //METHODS
-public List<VehicleViewModel>Vehicles(){
-    //HÄMTA DATA NÅGONSTANS
-    List<VehicleViewModel> list = [];
-    for(int i=0; i < 10; i++)
+    // METHODSk
+    public List<VehicleViewModel> GetVehicles()
     {
-        VehicleModel vehicle = new VehicleViewModel
+        List<VehicleViewModel> vehicleList = new List<VehicleViewModel>
         {
-            RegNo = "1222112",
-            Make = "Volvo",
-            Model = "V60",
-            ModelYear = 1984
+            new VehicleViewModel
+            {
+                Id = 1,
+                RegNo = "ABC112",
+                Make = "Volvo",
+                Model = "V60",
+                ModelYear = 1984
+            },
+            new VehicleViewModel
+            {
+                Id = 2,
+                RegNo = "SOX232",
+                Make = "Toyota",
+                Model = "Avensis",
+                ModelYear = 1984
+            },
+            new VehicleViewModel
+            {
+                Id = 3,
+                RegNo = "KLF235",
+                Make = "Ford",
+                Model = "V0",
+                ModelYear = 1984
+            }
+        };
+        return vehicleList;
+    }
+
+
+public VehicleViewModel Find(int id)
+{
+      
+        return List<VehicleViewModel> vehicleList = new List<VehicleViewModel>
+        {
+            new VehicleViewModel
+            {
+                Id = 1,
+                RegNo = "ABC112",
+                Make = "Volvo",
+                Model = "V60",
+                ModelYear = 1984
+            },
+            new VehicleViewModel
+            {
+                Id = 2,
+                RegNo = "SOX232",
+                Make = "Toyota",
+                Model = "Avensis",
+                ModelYear = 1984
+            },
+            new VehicleViewModel
+            {
+                Id = 3,
+                RegNo = "KLF235",
+                Make = "Ford",
+                Model = "V0",
+                ModelYear = 1984
+            }
         }
     }
-    return [];   
-}
 }

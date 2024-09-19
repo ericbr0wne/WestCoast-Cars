@@ -1,7 +1,8 @@
-﻿namespace WestCoast_Cars;
+﻿namespace WestCoast_Cars.Models;
 
 public class VehicleViewModel
 {
+    public int Id { get; set; }
     public string RegNo { get; set; } = "";
     public string Make { get; set; } = ""; 
 

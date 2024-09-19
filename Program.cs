@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using WestCoast_Cars.Data;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<WestCoastCarsContext>(options => 
+    options.UseSqlite(builder.Configuration.GetConnectionString("Sqlite")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

@@ -1,3 +1,9 @@
-<h1>Det fungerar!!</h1>
-<section>@ViewBag.Message</section>
-<section>@ViewData["Test"]</section>
+@model IList<WestCoast_Cars.ViewModels.VehicleViewModel> 
+
+    <h1>Aktuella bilar til försäljning</h1>
+
+<section>
+    @foreach (var vehicle in Model) {
+        <a asp-action="details" asp-controller="vehicles" asp-route-id="@vehicle.Id">@vehicle.Make | @vehicle.Model | @vehicle.ModelYear</a>
+    }
+</section>

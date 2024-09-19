@@ -1,34 +1,37 @@
 using Microsoft.AspNetCore.Mvc;
+using SQLitePCL;
+using WestCoast_Cars.Data;
+using WestCoast_Cars.Models;
 
 namespace WestCoast_Cars.Namespace
 {
         [Route("vehicles")]
     public class VehiclesController : Controller
     {
+        private readonly WestCoastCarsContext _context;
+
+        public VehiclesController(WestCoastCarsContext context) 
+        {
+            _context = context;
+            
+        }
         // GET: Vehicles
         public ActionResult Index()
         {
-            ViewBag.Message = "Här kommer en lista på häftiga bilar";
-            ViewData.Add("Test", "ViewData funkar också!");
 
-            return View("Index");
+        VehicleModel model = new VehicleModel();
+        List<VehicleViewModel> vehicleList = model.GetVehicles();
+
+        return View("Index", vehicleList);
         }
 
-    [HttpGet("list")]
-    public IActionResult List()
-    {
-        VehicleModel model = new VehicleModel();
-        List<VehicleViewModel> vehicleList = model.Vehicles();
-
-        ViewBag.Message = "Jag kommer ifrån List metoden";
-        return View("List", vehicleList);
-    }
 
     [HttpGet("details/{id}")]
     public IActionResult Details(int id)
     {
-    ViewBag.Message = $"Här är detaljerna för den valda bilen med id {id}";
-    return View("Details");
+        VehicleModel model = new();
+        VehicleViewModel vehicle = model.Find(id); 
+    return View("Details", vehicle);
     }
 
     [HttpGet("find/{id}")]
